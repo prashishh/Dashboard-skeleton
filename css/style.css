@@ -1,0 +1,135 @@
+/** Custom Stylesheet **/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	position: relative;
+	background: none repeat scroll 0 0 white;
+	margin: 0;
+	padding: 0; 
+}
+
+body {
+	margin: 0;
+}
+
+.borderyes 
+{
+	border-bottom: 1px solid #000;
+}
+
+
+/** Left Navigation **/
+
+.lefted {
+	margin-left:0px;
+}
+
+.navigation-section {
+	padding-top: 30px;
+	border-right: solid #000 1px;
+	min-height: 500px;
+}
+
+.navigation-section .title {
+	background: #d7d5d5;
+	margin: 0px;
+	padding: 5px;
+
+}
+
+.navigation-section .content ul {
+	list-style: none;
+}
+
+.navigation-section .content ul li {
+	padding: 5px 5px 0 5px;
+	margin: 0px;
+}
+
+.navigation-section .selected{
+	background: #f4f0f0;
+	padding:0px;
+}
+
+/** End of Left Navigation **/	
+
+
+/** Main Content **/
+
+.content-box {
+	border: solid #cacaca 2px;
+	background: #eeeeee;
+	padding: 0px;
+}
+
+.content-box span.title {
+	font-size: 20px;
+	margin-left: 30px;
+}
+
+.content-box .formlabel {
+	margin-top: 7px;	
+}
+
+.content-box .forminput {
+	margin-right: -20px;
+}
+	
+
+/** End Main Content **/
+
+
+/** Boxes **/
+
+.mainbox {
+	padding: 0px;
+
+}
+
+.box1 {
+	padding: 0px;
+	height: 300px;
+}
+
+.box2 {
+	height: 200px;
+}
+
+.box3 {
+	padding: 0px;
+	height: 150px;
+}
+
+.box4 {
+	height: 150px;
+
+}
+
+.box5 {
+	height: 150px;
+
+}
+/** End of Boxes **/
+
+
+/** Test **/
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  display: none;
+}
+/** end of Test **/
