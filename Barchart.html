@@ -53,16 +53,14 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("http://127.0.0.1:3100/api/getbar/", function(error, data) {
-
 d3.csv("bar.csv", function(error, data) {
 
   data.forEach(function(d) {
-    d.frequency = +d.frequency;
+    d.second = +d.second;
   });
 
-  x.domain(data.map(function(d) { return d.letter; }));
-  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+  x.domain(data.map(function(d) { return d.first; }));
+  y.domain([0, d3.max(data, function(d) { return d.second; })]);
 
   svg.append("g")
       .attr("class", "x axis")
@@ -83,12 +81,11 @@ d3.csv("bar.csv", function(error, data) {
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.letter); })
+      .attr("x", function(d) { return x(d.first); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.frequency); })
-      .attr("height", function(d) { return height - y(d.frequency); });
+      .attr("y", function(d) { return y(d.second); })
+      .attr("height", function(d) { return height - y(d.second); });
 
-});
 });
 
 </script>
