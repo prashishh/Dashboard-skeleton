@@ -291,128 +291,68 @@ path {
 
 <script>
 
-// Set the dimensions of the canvas / graph
-var margin = {top: 30, right: 20, bottom: 30, left: 50},
-  width = 400 - margin.left - margin.right,
-  height = 250 - margin.top - margin.bottom;
+var width = 960,
+    height = 500,
+    radius = Math.min(width, height) / 2;
 
-// Parse the date / time
-var parseDate = d3.time.format("%d-%b-%y").parse;
+var color = d3.scale.category20();
 
-// Set the ranges
-var x = d3.time.scale().range([0, width]);
-var y = d3.scale.linear().range([height, 0]);
+var pie = d3.layout.pie()
+    .sort(null);
 
-// Define the axes
-var xAxis = d3.svg.axis().scale(x)
-    .orient("bottom").ticks(5);
+var arc = d3.svg.arc()
+    .innerRadius(radius - 100)
+    .outerRadius(radius - 20);
 
-var yAxis = d3.svg.axis().scale(y)
-    .orient("left").ticks(5);
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-// Define the line
-var valueline = d3.svg.line()
-    .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.close); });
-    
-// Adds the svg canvas
-var svg = d3.select(".box5")
-    .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+d3.jsonp("http://localhost:3100/api/getanimpie?callback=d3.jsonp.foo", function(temp_data) {
 
-d3.jsonp("http://localhost:3100/api/getanimscatter2?callback=d3.jsonp.foo", function(temp_data) {
+  var split_data = temp_data.split(',').map(Number);
+  
+    console.log(split_data);
 
-  var split_data = temp_data.split(';');
-  var data = [];
-  var obj = new Object;
+    var path = svg.selectAll("path")
+    .data(pie(split_data))
+  .enter().append("path")
+    .attr("fill", "function(d, i) { return color(i); }")
+    .attr("d", arc)
+    .each(function(d) { this._current = d; }); // store the initial values
 
-  // Get the initial data
-    split_data.forEach(function(temp_d) {
-
-       // console.log(temp_d);
-        temp_d = temp_d.split(',');
-        obj.date = parseDate(temp_d[0]);
-        obj.close = +temp_d[1];
-
-        data.push($.extend({}, obj));
-  });
-
-    console.log(data);
-
-    // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.date; }));
-    y.domain([0, d3.max(data, function(d) { return d.close; })]);
-
-    // Add the valueline path.
-    svg.append("path")
-        .attr("class", "line")
-        .attr("d", valueline(data));
-
-    // Add the X Axis
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
-
-    // Add the Y Axis
-    svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis);
 });
 
 // Update the data every 5 seconds
 var inter = setInterval(function() {  // starts up a function that repeats on an interval set at the end of the function
         updateData();                 // redraw every 5 seconds
-    }, 5000);                         // sets the interval for the 'reload'
+    }, 2000);                         // sets the interval for the 'reload'
 
 function updateData() {
 
-d3.tsv("http://127.0.0.1:3100/api/getanimscatter", function(error, data) {
-
     // Get the data again
-d3.jsonp("http://localhost:3100/api/getanimscatter2?callback=d3.jsonp.foo", function(temp_data) {
+d3.jsonp("http://localhost:3100/api/getanimpie?callback=d3.jsonp.foo", function(temp_data) {
 
-    var split_data = temp_data.split(';');
-    var data = [];
-    var obj = new Object;
+   var split_data = temp_data.split(',').map(Number);
 
-  // Get the initial data
-    split_data.forEach(function(temp_d) {
-
-       // console.log(temp_d);
-        temp_d = temp_d.split(',');
-        obj.date = parseDate(temp_d[0]);
-        obj.close = +temp_d[1];
-
-        data.push($.extend({}, obj));
-  });
-
-      // Scale the range of the data again 
-      x.domain(d3.extent(data, function(d) { return d.date; }));
-      y.domain([0, d3.max(data, function(d) { return d.close; })]);
-
-    // Select the section we want to apply our changes to
-    var svg = d3.select("body")
+  console.log(split_data);
 
     // Make the changes
-    var vis = svg.transition();
-        vis.select(".x.axis") // change the x axis
-            .duration(750)
-            .call(xAxis);
-        vis.select(".y.axis") // change the y axis
-            .duration(750)
-            .call(yAxis);
-        vis.select(".line")   // change the line
-            .duration(750)
-            .attr("d", valueline(data));
+    var path = svg.selectAll("path")
+    path = path.data(pie(split_data)) // update the data
+    path = path.transition().duration(750).attrTween("d", arcTween); // redraw the arcs
 
-    });
-  });
+  function arcTween(a) {
+  var i = d3.interpolate(this._current, a);
+  this._current = i(0);
+  return function(t) {
+    return arc(i(t));
+  };
 }
-
+});
+}
 </script>
 
 <!--

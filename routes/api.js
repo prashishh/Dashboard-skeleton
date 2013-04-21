@@ -75,6 +75,7 @@ exports.getbar= function ( req, res ) {
     console.log(output.join('\n'));
     res.write(output.join('\n'));
 
+/*
    fs.writeFile("bar.csv", output.join('\n').toString(), function(err) {
       if(err) {
           console.log(err);
@@ -82,7 +83,7 @@ exports.getbar= function ( req, res ) {
           console.log("The file was saved!");
       }
   }); 
-
+*/
   res.end();
 
 
@@ -116,6 +117,121 @@ exports.getanimpie= function ( req, res ) {
   
     console.log(JSON.stringify(output));
     res.write("d3.jsonp.foo('" + output + "');");
+    res.end();
+
+});
+  connection.end();
+  
+};
+
+
+exports.getanimscatter= function ( req, res ) {
+
+  var mysql = require('mysql');
+  var output = [];
+  var fs = require('fs');
+
+  var connection = mysql.createConnection({
+    host     : '127.0.0.1',
+    port     : '8889',
+    user     : 'root',
+    password : 'root',
+    database : 'NodeSample',
+  });
+
+  connection.connect();
+  res.writeHeader(200, {'Content-type': 'application/json'});
+
+  connection.query('SELECT * FROM ScatterTable', function(err, rows, fields) {
+    if (err) throw err;
+        
+        output.push("date" + '\t' + "close");
+
+    for (var i in rows) {
+        output.push(rows[i].ID + '\t' + rows[i].Value);
+    }
+    console.log(output.join('\n'));
+    res.write(output.join('\n'));
+
+
+   fs.writeFile("scatter.tsv", output.join('\n').toString(), function(err) {
+      if(err) {
+          console.log(err);
+      } else {
+          console.log("The file was saved!");
+      }
+  }); 
+    res.end();
+
+});
+  connection.end();
+  
+};
+
+exports.getanimscatter2= function ( req, res ) {
+
+  var mysql = require('mysql');
+  var output = [];
+  var fs = require('fs');
+
+  var connection = mysql.createConnection({
+    host     : '127.0.0.1',
+    port     : '8889',
+    user     : 'root',
+    password : 'root',
+    database : 'NodeSample',
+  });
+
+  connection.connect();
+  res.writeHeader(200, {'Content-type': 'application/json'});
+
+  connection.query('SELECT * FROM ScatterTable', function(err, rows, fields) {
+    if (err) throw err;
+     //   output.push("date" + ',' + "close");
+
+    for (var i in rows) {
+        output.push(rows[i].ID + ',' + rows[i].Value);
+    }
+
+    console.log(output.join(';'));
+    res.write("d3.jsonp.foo('" + output.join(';') + "');");
+
+    res.end();
+
+});
+  connection.end();
+  
+};
+
+
+exports.getstackedbar= function ( req, res ) {
+
+  var mysql = require('mysql');
+  var output = [];
+  var fs = require('fs');
+
+  var connection = mysql.createConnection({
+    host     : '127.0.0.1',
+    port     : '8889',
+    user     : 'root',
+    password : 'root',
+    database : 'NodeSample',
+  });
+
+  connection.connect();
+  res.writeHeader(200, {'Content-type': 'application/json'});
+
+  connection.query('SELECT * FROM BarGroupSample', function(err, rows, fields) {
+    if (err) throw err;
+     //   output.push("date" + ',' + "close");
+
+    for (var i in rows) {
+        output.push(rows[i].Group + ',' + rows[i].Date + ',' + rows[i].Value);
+    }
+
+    console.log(output.join(';'));
+    res.write("d3.jsonp.foo('" + output.join(';') + "');");
+
     res.end();
 
 });
