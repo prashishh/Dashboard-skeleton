@@ -8,15 +8,19 @@
 <script src="js/vendor/d3.js"></script>
 <script src="lib/angular/angular.js"></script>
 <script src="lib/angular/angular-resource.js"></script>
-  <script src="https://raw.github.com/angular-ui/angular-ui/master/build/angular-ui.js"></script>
-
 <script src="js/app.js"></script>
+<script src="js/directives.js"></script>
+<script src="https://raw.github.com/angular-ui/angular-ui/master/build/angular-ui.js"></script>
 
 
 <div ng-app="plunker">
 
 <div ng-controller="MainCtrl">
-{{data}}<br>
+
+Directive halau na ta
+<bar-directive data="data"> </bar-directive>
+
+Mauj cha hai Maa Chikne 
 </div>
 
 </div>
