@@ -87,12 +87,13 @@ body {
 
 .mainbox {
 	padding: 0px;
+	margin-top: 20px;
 
 }
 
 .box1 {
 	padding: 0px;
-	height: 300px;
+	height: 350px;
 }
 
 .box2 {
@@ -110,7 +111,7 @@ body {
 }
 
 .box5 {
-	height: 150px;
+	height: 200px;
 
 }
 /** End of Boxes **/

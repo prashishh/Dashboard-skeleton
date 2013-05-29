@@ -1,0 +1,39 @@
+.axis text {
+font: 10px sans-serif;
+color: #000;
+}
+
+.axis path,
+.axis line {
+fill: none;
+stroke: #000;
+shape-rendering: crispEdges;
+}
+
+.bar {
+fill: steelblue;
+fill-opacity: .9;
+}
+
+.x.axis path {
+display: none;
+}
+
+form {
+right: 10px;
+top: 10px;
+}
+
+path { 
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: none;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: grey;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
