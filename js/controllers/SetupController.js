@@ -2,10 +2,17 @@
 
 dashboardApp.controller('SetupController',
   function SetupController($scope, users, credentials) {
-    
-    credentials.setHostname('eh');
-    $scope.hostname = credentials.getHostname();
 
-    //user.username = 'test';
-    //$scope.test = user.usernames;
+    $scope.done = function() {
+      credentials.setInitTrigger();
+    }
+
+  $scope.$watch(credentials.getInitTrigger, function (newValue, oldValue, scope) {
+    if (newValue && newValue !== oldValue) {
+        credentials.setNewValues($scope.hostname, $scope.username, $scope.password, $scope.port);
+          credentials.setFinalTrigger();
+    }
+  });
+
+
   });
