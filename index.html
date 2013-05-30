@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="dashboardApp">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title> Dashboard Framework</title>
@@ -9,10 +9,6 @@
   <link rel="stylesheet" type="text/css" href="css/style.css" />
   <link rel="stylesheet" type="text/css" href="css/visualization.css" />
 
-  <!-- js -->
-  <script type="text/javascript"  src="js/vendor/jquery.js"></script>
-  <script type="text/javascript"  src="js/vendor/d3.js"></script>
-  <script type="text/javascript"  src="js/vendor/jsonp.js"></script>
 </head>
 
 <body>
@@ -57,39 +53,28 @@
 
 <!-- right content mainbox --> 
 <div class="large-9 columns mainbox ">
-	<div class="row">
-    <!-- left div of content box -->
-		<div class="large-8 columns content-box">
-			<div class="box1">
 
-      </div> 
-		</div> 
-    <!-- end of left div of content box -->
+<ng-view></ng-view>
 
-    <!-- right content box divs -->
-    <div class="large-4 columns content-box">
-      <div class="box4">
-        Admin
-      </div> 
-      <div class="box2">
-        Admin
-      </div> 
-    </div>
-    <!-- end of right content box divs -->
-
-    <!-- bottom div -->
-    <div class="large-12 columns content-box">
-      <div class="box5">
-
-      </div>
-    </div>
-    <!-- end of bottom div -->
-
-	</div> <!-- end of main row -->
 </div> <!-- end of large-9 section -->
 <!-- end of right content mainbox -->
 
 </div> <!-- end of main wrapper row -->
+
+<!-- angular -->
+<script src="js/lib/angular/angular.js"></script>
+<script src="js/lib/angular/angular-resource.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers/DashboardController.js"></script>
+<script src="js/controllers/SetupController.js"></script>
+
+<script src="js/services/user.js"></script>
+
+
+<!-- js -->
+<script type="text/javascript"  src="js/vendor/jquery.js"></script>
+<script type="text/javascript"  src="js/vendor/d3.js"></script>
+<script type="text/javascript"  src="js/vendor/jsonp.js"></script>
 
 </body>
 
