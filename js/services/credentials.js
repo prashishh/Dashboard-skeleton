@@ -6,6 +6,7 @@ dashboardApp.factory('credentials', function() {
     username: null,
     password: null,
     port: null,
+    database: null,
     init_trigger: 0,
     final_trigger: 0
   };
@@ -19,6 +20,10 @@ dashboardApp.factory('credentials', function() {
       cred.username = username ;
       cred.password = password;
       cred.port = port;
+    },
+    setDatabase: function(db) {
+      cred.database = db;
+      console.log(cred.database);
     },
     getInitTrigger: function() {
       return cred.init_trigger;

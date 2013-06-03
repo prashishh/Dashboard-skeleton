@@ -1,55 +1,37 @@
 'use strict';
 
-dashboardApp.directive('navig-section', function() {
+dashboardApp.directive('dropdown', function($http){
   return {
     restrict: 'E',
-    replace: true,
-    template: '<p>' + $scope.username + '</p>',
-    link: function(scope, element, attrs, ctrl) {
-      
-    }
-  }
-})
-
-
-
-
-
-
-/*
-// directives.js
-angular.module('demo.directives', [])
-    .directive('bar', function() {
-        return {
-            restrict: 'E',
-            scope: {
-              model: '='
-            },
-            link: function(scope, element, attrs, ctrl) {
-                element.text("Hello World!");
-               // var modelArray = scope.$eval(attrs.val[0]);
-              // attrs.model = ['1', '2'];
-               console.log(scope.model.values[1]);
-             // console.log(scope.);
-            }
+    link: function(scope, elem, attr, ctrl) {
+       scope.$watch('selectedItem', function (newValue, oldValue, scope) {
+      if (newValue && newValue !== oldValue) {    
+        var postData = {
+          'hostname' : scope.hostname,
+          'username' : scope.username,
+          'password' : scope.password,
+          'port' : scope.port,
+          'database' : scope.selectedItem 
         };
+
+      $http({
+        method: "POST",
+        url: '/api/showTables',
+        data: postData
+      }).
+      success(function(data, status, headers, config) {
+        scope.yoyo = data;
+      }).
+      error(function(data, status, headers, config) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      });
+    }
     });
-
-
-angular.module('demo.directives', [])
-  .directive('bar', function() {
-    return {
-      restrict: 'A',
-      scope: {
-        text: "@myText",
-        twoWayBind: "=myTwoWayBind",
-        oneWayBind: "$myOneWayBind"
-      },
-      link: function(scope, element, attrs, ctrl) {
-          console.log(scope.text);
-      }
-    };
-  });
-
-  */
+    },
+    template: '<select ng-model="selectedItem" ng-options="a as a for a in databases">' +
+            '<option style="display: none" value="">-- Select Db --</option>' +
+          '</select>'
+    }
+});
 

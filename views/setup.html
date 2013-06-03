@@ -1,9 +1,18 @@
-<form class="custom" ng-submit="done();">
 <input type = "text" ng-model="hostname" />
 <input type = "text" ng-model="username" />
 <input type = "text" ng-model="password" />
 <input type = "text" ng-model="port" />
-<input type ="submit" />
-</form>
+
+<button ng-click="getDatabases();">Get Databases</button>
+
+
+<dropdown array="databases" ></dropdown>
+
+
+<button ng-click="getTables();">Get Databases</button>
+
+
 
 {{hostname}}
+
+{{yoyo}}

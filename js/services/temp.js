@@ -6,24 +6,24 @@ dashboardApp.factory('temp', function() {
     password: null
   };
 
-  var tables = new Array();
+  var databases  = new Array();
 
   return {
-    getTables: function() {
-      return tables;
+    getDatabases: function() {
+      return databases;
     },
-    setTables: function(table) {
-      tables = table;
+    setDatabases: function(db) {
+      databases = db;
     },
-    isTablesEmpty: function() {
-      if(tables.length==0) 
+    isDatabasesEmpty: function() {
+      if(databases.length==0) 
         return 1;
       else
       return 0;
     }
   }
 
-  return user;
+  return databases;
 });
 
 

@@ -31,7 +31,9 @@ app.configure('development', function(){
 
 // get api
 app.post('/api/showdb', api.showDB);
+app.post('/api/showTables', api.showTables);
+app.post('/api/getColumns', api.getColumns);
 
-app.listen(3100, function() {
+app.listen(3200, function() {
   console.log("Express server started");
 })

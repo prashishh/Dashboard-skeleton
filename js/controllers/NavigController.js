@@ -3,6 +3,7 @@
 dashboardApp.controller('NavigController',
   function NavigController($scope, temp, credentials) {
 
+    
     $scope.$watch(credentials.getFinalTrigger, function (newValue, oldValue, scope) {
       if (newValue && newValue !== oldValue) {
           var cred = credentials.getValues();
@@ -13,11 +14,10 @@ dashboardApp.controller('NavigController',
       } 
     });
 
-    $scope.$watch(temp.isTablesEmpty, function (newValue, oldValue, scope) {
-      console.log(oldValue + ' ' + newValue);
+    $scope.$watch(temp.isDatabasesEmpty, function (newValue, oldValue, scope) {
       if (newValue !== oldValue) {
-          var tables = temp.getTables();
-          $scope.tables = tables;
+          var databases = temp.getDatabases();
+          $scope.databases = databases;
       } 
     });
 
