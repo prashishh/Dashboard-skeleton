@@ -4,8 +4,9 @@
 exports.showDB = function ( req, res ) {
   
   var mysql = require('mysql');
-  var fs = require('fs');
   var output = [];
+
+  console.log(req.body);
 
   var connection = mysql.createConnection({
     host     : '127.0.0.1',
@@ -13,6 +14,15 @@ exports.showDB = function ( req, res ) {
     user     : 'root',
     password : 'root'
   });
+
+  /*
+  var connection = mysql.createConnection({
+    host     : req.body.hostname,
+    port     : req.body.port,
+    user     : req.body.username,
+    password : req.body.password
+  });
+  */
 
   connection.connect();
   res.writeHeader(200, {'Content-type': 'application/json'});
@@ -25,8 +35,7 @@ exports.showDB = function ( req, res ) {
         output.push(rows[i].Database);
     }
     
-    console.log(output.join('\n'));
-    res.write(output.join('\n'));
+    res.write(output.join(','));
 
     res.end();
   });
