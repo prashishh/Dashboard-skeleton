@@ -1,9 +1,9 @@
 'use strict';
 
 dashboardApp.controller('DashboardController',
-  function DashboardController($scope, users, $location) {
+  function DashboardController($scope, temp, $location) {
 
-    if(!users.username)
+    if(!temp.username)
       $location.url('/setup');
 
   });
