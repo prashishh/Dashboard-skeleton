@@ -47,11 +47,11 @@ dashboardApp.controller('SetupController',
 
     $scope.$watch('yoyo', function (newValue, oldValue, scope) {
       
-      console.log($scope.yoyo);
+   //   console.log($scope.yoyo);
       
       if(typeof $scope.yoyo != 'undefined') {
         var tables = $scope.yoyo.split(';');
-
+        temp.removeTables();
         for( var i = 0; i < tables.length; i++) {
           var postData = {
             'hostname' : scope.hostname,
@@ -68,7 +68,8 @@ dashboardApp.controller('SetupController',
             data: postData
           }).
           success(function(data, status, headers, config) {
-            console.log(data);
+           // console.log(data);
+            temp.setTables(data);
           }).
           error(function(data, status, headers, config) {
           // called asynchronously if an error occurs

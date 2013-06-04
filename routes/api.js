@@ -111,6 +111,8 @@ exports.getColumns = function ( req, res ) {
   connection.query("select COLUMN_NAME from information_schema.columns where table_schema = '" + req.body.database + "' and table_name = '" + req.body.table +"' order by table_name,ordinal_position", function(err, rows, fields) {
     if (err) throw err;
 
+    output.push(req.body.table);
+
     for (var i in rows) {
         output.push(rows[i]['COLUMN_NAME']);
     }

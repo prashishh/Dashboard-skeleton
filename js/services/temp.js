@@ -6,6 +6,7 @@ dashboardApp.factory('temp', function() {
     password: null
   };
 
+  var tables = new Array();
   var databases  = new Array();
 
   return {
@@ -20,6 +21,18 @@ dashboardApp.factory('temp', function() {
         return 1;
       else
       return 0;
+    },
+    setTables: function(tbl) {
+      tables.push(tbl);
+    },
+    getTables: function() {
+      return tables;
+    },
+    isTablesEmpty: function() {
+      return tables.length;
+    },
+    removeTables: function() {
+      tables = [];
     }
   }
 

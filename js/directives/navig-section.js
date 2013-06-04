@@ -35,3 +35,44 @@ dashboardApp.directive('dropdown', function($http){
     }
 });
 
+
+dashboardApp.directive('navigSection', function(temp){
+  return {
+    restrict: 'E',
+    replace: true,
+    link: function($scope, element, attrs) {
+
+      $scope.$watch(temp.isTablesEmpty, function (newValue, oldValue, scope) {
+        console.log(temp.isTablesEmpty());
+        if ( temp.isTablesEmpty != 0 ) {
+          var table = temp.getTables();
+          var elem = "";
+
+          for ( var i = 0; i < table.length; i++ ) {
+            var temp_tbl = table[i].split(';');
+            var table_name = temp_tbl[0];
+            var col_name = new Array();
+
+            for ( var k = 1; k < temp_tbl.length; k++ )
+              col_name.push(temp_tbl[k]);
+            
+            elem += '<section class="section">' +
+                        '<p class="title"> <a href="#">' + table_name + '</a></p>' +
+                        '<div class="content">' +
+                          '<ul class="side-navig">';
+
+            for ( var k = 0; k < col_name.length; k++ )
+              elem += '<li>'+ col_name[k] +'</li>';
+
+              elem += '</ul>' +
+                        '</div>' +
+                      '</section>';
+          }
+            element.html(elem); 
+           
+        }
+      });
+    }
+  }
+});
+
