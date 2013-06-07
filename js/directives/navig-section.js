@@ -36,16 +36,16 @@ dashboardApp.directive('dropdown', function($http){
 });
 
 
-dashboardApp.directive('navigSection', function(temp, $compile){
+dashboardApp.directive('navigSection', function(databaseTableService, $compile){
   return {
     restrict: 'E',
     replace: true,
     link: function(scope, element, attrs) {
 
       /* Water spilled on my mac, so I'm using my mom's laptop to write this code :( */
-      scope.$watch(temp.isTablesEmpty, function (newValue, oldValue) {
-        if ( temp.isTablesEmpty != 0 ) {
-          var table = temp.getTables();
+      scope.$watch(databaseTableService.isTablesEmpty, function (newValue, oldValue) {
+        if ( databaseTableService.isTablesEmpty != 0 ) {
+          var table = databaseTableService.getTables();
           var elem = "";
 
           for ( var i = 0; i < table.length; i++ ) {

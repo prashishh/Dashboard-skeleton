@@ -1,6 +1,6 @@
 'use strict';
 
-dashboardApp.factory('temp', function() {
+dashboardApp.factory('databaseTableService', function() {
   var user = {
     username: null,
     password: null

@@ -1,7 +1,7 @@
 'use strict';
 
 dashboardApp.controller('NavigController',
-  function NavigController($scope, temp, credentials) {
+  function NavigController($scope, databaseTableService, credentials, vizService) {
 
     
     $scope.$watch(credentials.getFinalTrigger, function (newValue, oldValue, scope) {
@@ -14,15 +14,29 @@ dashboardApp.controller('NavigController',
       } 
     });
 
-    $scope.$watch(temp.isDatabasesEmpty, function (newValue, oldValue, scope) {
+    $scope.$watch(databaseTableService.isDatabasesEmpty, function (newValue, oldValue, scope) {
       if (newValue !== oldValue) {
-          var databases = temp.getDatabases();
+          var databases = databaseTableService.getDatabases();
           $scope.databases = databases;
       } 
     });
 
+    $scope.$watch(vizService.checkIfEmpty, function (newValue, oldValue) {
+      if (newValue !== oldValue) {
+          console.log(newValue);
+      } 
+    });
+
     $scope.selectedVals = function(table, column) {
-      console.log(table + " " + column);
+      if($('#labelattr').is(':checked')) {
+        $scope.table_1 = table;
+        $scope.column_1 = column;  
+        vizService.setVizLabel(table, column);
+      } else {
+        $scope.table_2 = table;
+        $scope.column_2 = column;  
+        vizService.setVizQuantity(table, column);
+      } 
     }
 
   });

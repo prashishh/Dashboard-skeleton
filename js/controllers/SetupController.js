@@ -1,7 +1,7 @@
 'use strict';
 
 dashboardApp.controller('SetupController',
-  function SetupController($scope, temp, credentials, $http) {
+  function SetupController($scope, databaseTableService, credentials, $http) {
     $scope.getDatabases = function() {
 
       credentials.setInitTrigger();
@@ -19,7 +19,7 @@ dashboardApp.controller('SetupController',
           }).
           success(function(data, status, headers, config) {
             var db = data.split(',');
-            temp.setDatabases(db);
+            databaseTableService.setDatabases(db);
           }).
           error(function(data, status, headers, config) {
           // called asynchronously if an error occurs
@@ -49,7 +49,7 @@ dashboardApp.controller('SetupController',
             
       if(typeof $scope.yoyo != 'undefined') {
         var tables = $scope.yoyo.split(';');
-        temp.removeTables();
+        databaseTableService.removeTables();
         for( var i = 0; i < tables.length; i++) {
           var postData = {
             'hostname' : scope.hostname,
@@ -67,7 +67,7 @@ dashboardApp.controller('SetupController',
           }).
           success(function(data, status, headers, config) {
            // console.log(data);
-            temp.setTables(data);
+            databaseTableService.setTables(data);
           }).
           error(function(data, status, headers, config) {
           // called asynchronously if an error occurs

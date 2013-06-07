@@ -1,9 +1,9 @@
 'use strict';
 
 dashboardApp.controller('DashboardController',
-  function DashboardController($scope, temp, $location) {
+  function DashboardController($scope, databaseTableService, $location) {
 
-    if(!temp.username)
+    if(!databaseTableService.username)
       $location.url('/setup');
 
   });
