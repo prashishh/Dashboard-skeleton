@@ -30,9 +30,10 @@ app.configure('development', function(){
 
 
 // get api
-app.post('/api/showdb', api.showDB);
-app.post('/api/showTables', api.showTables);
-app.post('/api/getColumns', api.getColumns);
+app.post('/api/showdb', api.showdb);
+app.post('/api/showTables', api.showtables);
+app.post('/api/getColumns', api.getcolumns);
+app.post('/api/barchart', api.barchart);
 
 app.listen(3200, function() {
   console.log("Express server started");
