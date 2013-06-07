@@ -2,6 +2,20 @@
 
 dashboardApp.controller('SetupController',
   function SetupController($scope, databaseTableService, credentials, $http) {
+    $scope.data = [
+      {
+        'first': 'A',
+        'second' : '30'
+      },
+      {
+        'first': 'B',
+        'second' : '10'
+      },
+      {
+        'first': 'K',
+        'second' : '20'
+      }
+    ];
     $scope.getDatabases = function() {
 
       credentials.setInitTrigger();
