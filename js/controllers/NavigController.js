@@ -21,4 +21,8 @@ dashboardApp.controller('NavigController',
       } 
     });
 
+    $scope.selectedVals = function(table, column) {
+      console.log(table + " " + column);
+    }
+
   });

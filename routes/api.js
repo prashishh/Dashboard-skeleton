@@ -8,9 +8,9 @@ exports.showDB = function ( req, res ) {
 
   var connection = mysql.createConnection({
     host     : '127.0.0.1',
-    port     : '8889',
+    port     : '3306',
     user     : 'root',
-    password : 'root'
+    password : ''
   });
 
   /*
@@ -23,19 +23,25 @@ exports.showDB = function ( req, res ) {
   */
 
   connection.connect();
+  console.log('Connected to MySQL.');
   res.writeHeader(200, {'Content-type': 'application/json'});
 
   var output = [];
   connection.query('SHOW DATABASES;', function(err, rows, fields) {
     if (err) throw err;
 
+    console.log("Query fired and successful.")
     for (var i in rows) {
         output.push(rows[i].Database);
     }
+    var result = output.join(',');
+
+    console.log("Response: " + result);
     
-    res.write(output.join(','));
+    res.write(result);
     res.end();
   });
+  console.log("Connection Closed.");
   connection.end();
 };
 
@@ -45,12 +51,12 @@ exports.showTables = function ( req, res ) {
   
   var mysql = require('mysql');
   var output = [];
-  
+
   var connection = mysql.createConnection({
     host     : '127.0.0.1',
-    port     : '8889',
+    port     : '3306',
     user     : 'root',
-    password : 'root',
+    password : '',
     database : req.body.database
   });
 
@@ -64,6 +70,8 @@ exports.showTables = function ( req, res ) {
   */
 
   connection.connect();
+  console.log('Connected to MySQL.');
+
   res.writeHeader(200, {'Content-type': 'application/json'});
 
   var output = [];
@@ -75,8 +83,14 @@ exports.showTables = function ( req, res ) {
         output.push(rows[i][col]);
     }
     
-    res.write(output.join(';'));
+    var result = output.join(';');
+
+    console.log("Response: " + result);
+    
+    res.write(result);
     res.end();
+
+    console.log("Connection Closed.");
   });
   connection.end();
 };
@@ -89,9 +103,9 @@ exports.getColumns = function ( req, res ) {
   
   var connection = mysql.createConnection({
     host     : '127.0.0.1',
-    port     : '8889',
+    port     : '3306',
     user     : 'root',
-    password : 'root',
+    password : '',
     database : req.body.database
   });
 
@@ -116,9 +130,16 @@ exports.getColumns = function ( req, res ) {
     for (var i in rows) {
         output.push(rows[i]['COLUMN_NAME']);
     }
+
+    var result = output.join(';');
+
+    console.log("Response: " + result);
     
-    res.write(output.join(';'));
+    res.write(result);
+
     res.end();
+    console.log("Connection Closed.");
+
   });
   connection.end();
 };

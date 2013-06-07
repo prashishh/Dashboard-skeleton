@@ -46,9 +46,7 @@ dashboardApp.controller('SetupController',
     });
 
     $scope.$watch('yoyo', function (newValue, oldValue, scope) {
-      
-   //   console.log($scope.yoyo);
-      
+            
       if(typeof $scope.yoyo != 'undefined') {
         var tables = $scope.yoyo.split(';');
         temp.removeTables();

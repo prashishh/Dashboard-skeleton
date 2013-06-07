@@ -36,14 +36,14 @@ dashboardApp.directive('dropdown', function($http){
 });
 
 
-dashboardApp.directive('navigSection', function(temp){
+dashboardApp.directive('navigSection', function(temp, $compile){
   return {
     restrict: 'E',
     replace: true,
-    link: function($scope, element, attrs) {
+    link: function(scope, element, attrs) {
 
-      $scope.$watch(temp.isTablesEmpty, function (newValue, oldValue, scope) {
-        console.log(temp.isTablesEmpty());
+      /* Water spilled on my mac, so I'm using my mom's laptop to write this code :( */
+      scope.$watch(temp.isTablesEmpty, function (newValue, oldValue) {
         if ( temp.isTablesEmpty != 0 ) {
           var table = temp.getTables();
           var elem = "";
@@ -62,14 +62,16 @@ dashboardApp.directive('navigSection', function(temp){
                           '<ul class="side-navig">';
 
             for ( var k = 0; k < col_name.length; k++ )
-              elem += '<li>'+ col_name[k] +'</li>';
+              elem += '<li ng-click=selectedVals("' + table_name + '","' + col_name[k] + '");>'+ col_name[k] +'</li>';
 
               elem += '</ul>' +
                         '</div>' +
                       '</section>';
           }
             element.html(elem); 
-           
+            $compile(element.contents())(scope);
+
+
         }
       });
     }
