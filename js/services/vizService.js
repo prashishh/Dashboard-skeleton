@@ -1,6 +1,6 @@
 'use strict';
 
-dashboardApp.factory('vizService', function() {
+dashboardApp.factory('vizService', function($http) {
 
   var viz_label = {
     table: "",
@@ -24,8 +24,9 @@ var viz_quantity = {
     checkIfEmpty: function() {
       if (viz_label.table == "" || viz_label.column == "" || viz_quantity.table == "" || viz_quantity.column == "")
         return true;
-      else 
+      else {
         return false;
+      }
     }
   }
 });

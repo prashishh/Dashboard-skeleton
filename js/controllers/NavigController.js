@@ -21,11 +21,13 @@ dashboardApp.controller('NavigController',
       } 
     });
 
+/*
     $scope.$watch(vizService.checkIfEmpty, function (newValue, oldValue) {
       if (newValue !== oldValue) {
           console.log(newValue);
       } 
     });
+*/
 
     $scope.selectedVals = function(table, column) {
       if($('#labelattr').is(':checked')) {
@@ -39,4 +41,5 @@ dashboardApp.controller('NavigController',
       } 
     }
 
+        
   });

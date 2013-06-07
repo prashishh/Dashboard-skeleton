@@ -27,8 +27,26 @@ dashboardApp.controller('SetupController',
           });
     }
 
-    $scope.getTables = function() {
-        
+    $scope.showBarChart = function() {
+        var postData = {
+          'databasename' : 'nodesample',
+          'tablename' : 'bar',
+          'label' : 'Name',
+          'quantity' : 'Value'
+        };
+
+        $http({
+            method: "POST",
+            url: '/api/barchart',
+            data: postData
+          }).
+          success(function(data, status, headers, config) {
+            console.log(data);
+          }).
+          error(function(data, status, headers, config) {
+          // called asynchronously if an error occurs
+          // or server returns response with an error status.
+          });
     }
 
 
