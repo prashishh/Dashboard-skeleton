@@ -2,7 +2,10 @@
 
 dashboardApp.controller('SetupController',
   function SetupController($scope, databaseTableService, credentials, $http) {
-    $scope.data = [
+    $scope.data = new Array();
+    $scope.barchartclicked = false;
+
+    /*
       {
         'first': 'A',
         'second' : '30'
@@ -16,6 +19,8 @@ dashboardApp.controller('SetupController',
         'second' : '20'
       }
     ];
+    */
+
     $scope.getDatabases = function() {
 
       credentials.setInitTrigger();
@@ -42,6 +47,8 @@ dashboardApp.controller('SetupController',
     }
 
     $scope.showBarChart = function() {
+
+      $scope.barchartclicked = true;
         var postData = {
           'databasename' : 'nodesample',
           'tablename' : 'bar',
@@ -80,6 +87,11 @@ dashboardApp.controller('SetupController',
     $scope.$watch('yoyo', function (newValue, oldValue, scope) {
             
       if(typeof $scope.yoyo != 'undefined') {
+
+        $scope.data.push({'first': 'A','second' : '30'});
+        $scope.data.push({'first': 'B','second' : '40'});
+        console.log($scope.data);
+
         var tables = $scope.yoyo.split(';');
         databaseTableService.removeTables();
         for( var i = 0; i < tables.length; i++) {
