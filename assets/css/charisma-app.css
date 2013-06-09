@@ -158,6 +158,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 
 }
 
+#content {
+	margin-left: 20px;
+}
+
 .box-header h2{
 font-size:15px;
 width:auto;
@@ -329,18 +333,12 @@ height:0px;
 
 .sidebar-nav{
 min-height:0;
-box-shadow: 0 0 10px #BDBDBD;
--webkit-box-shadow: 0 0 10px #BDBDBD;
--moz-box-shadow: 0 0 10px #BDBDBD;
-border-radius: 5px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
 margin-bottom: 0;
+height: 100%;
 padding-bottom:0;
 }
 .sidebar-nav > ul > li:not(.nav-header){
-margin-right:-2px;
-margin-left:-2px;
+	border-right: none;
 }
 .brand{
 font-family: 'Shojumaru', cursive, Arial, serif; 
@@ -361,6 +359,7 @@ float:left;
 .sidebar-nav{
 padding:0;
 margin-bottom:0;
+height: 100%;
 }
 .theme-text{
 	display:none;
@@ -379,8 +378,10 @@ margin-bottom:0;
 .main-menu-span{
 	width:6.2% !important;
 	margin-right:4%;
+	margin-left: -10px;
+	height: 100%;
 }
-}
+
 
 .navbar-search{
 margin-left:10px;
