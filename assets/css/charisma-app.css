@@ -137,13 +137,13 @@ box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
 
 .box-header{
 border:none;
-padding-top:5px;
+padding-top:0px;
 border-bottom: 1px solid #DEDEDE;
 border-radius:3px 3px 0 0;
 -webkit-border-radius:3px 3px 0 0;
 -moz-border-radius:3px 3px 0 0;
-height:12px;
-min-height:12px;
+height:6px;
+min-height:6px;
 margin-bottom: 0;
 cursor:move;
 font-weight:bold;
@@ -185,12 +185,12 @@ float:right;
 .box-icon a{
 clear:none;
 float:left;
-margin:0 2px;
-height: 18px;
-width:5px;
-margin-top: -1px;
+margin: 4px 0 0 2px;
+height: 8px;
+width: 1px;
 }
 .box-icon a i{
+margin-top:-2px;
 margin-left:-4.5px;
 }
 .box-content{

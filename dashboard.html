@@ -14,8 +14,6 @@
 	<meta charset="utf-8">
 	<title>Dashboard</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
-	<meta name="author" content="Muhammad Usman">
 
 	<!-- The styles -->
 	<link id="bs-css" href="assets/css/bootstrap-cerulean.css" rel="stylesheet">
@@ -61,6 +59,26 @@
 				</a>
 				<a class="brand" href="index.html"> <img alt="Charisma Logo" src="assets/img/logo20.png" /> <span>Dashboard</span></a>
 								
+				<!-- theme selector starts -->
+				<div class="btn-group pull-right theme-container" >
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+						<i class="icon-tint"></i><span class="hidden-phone"> Change Theme / Skin</span>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" id="themes">
+						<li><a data-value="classic" href="#"><i class="icon-blank"></i> Classic</a></li>
+						<li><a data-value="cerulean" href="#"><i class="icon-blank"></i> Cerulean</a></li>
+						<li><a data-value="cyborg" href="#"><i class="icon-blank"></i> Cyborg</a></li>
+						<li><a data-value="redy" href="#"><i class="icon-blank"></i> Redy</a></li>
+						<li><a data-value="journal" href="#"><i class="icon-blank"></i> Journal</a></li>
+						<li><a data-value="simplex" href="#"><i class="icon-blank"></i> Simplex</a></li>
+						<li><a data-value="slate" href="#"><i class="icon-blank"></i> Slate</a></li>
+						<li><a data-value="spacelab" href="#"><i class="icon-blank"></i> Spacelab</a></li>
+						<li><a data-value="united" href="#"><i class="icon-blank"></i> United</a></li>
+					</ul>
+				</div>
+				<!-- theme selector ends -->
+				
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -278,7 +296,7 @@
 					</div>
 				</div><!--/span-->
 					
-				<div class="box span4">
+				<div class="box span8">
 					<div class="box-header well" data-original-title>
 						<h2><i class="icon-list"></i> Buttons</h2>
 						<div class="box-icon">
@@ -317,7 +335,8 @@
 						
 					</div>
 				</div><!--/span-->
-					
+				
+				<!--
 				<div class="box span4">
 					<div class="box-header well" data-original-title>
 						<h2><i class="icon-list"></i> Weekly Stat</h2>
@@ -390,7 +409,164 @@
 				</div><!--/span-->
 			</div><!--/row-->
 				  
-
+			<div class="row-fluid sortable">
+				<div class="box span8">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-list"></i> Buttons</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content buttons">
+						<p class="btn-group">
+							  <button class="btn">Left</button>
+							  <button class="btn">Middle</button>
+							  <button class="btn">Right</button>
+						</p>
+						<p>
+							<button class="btn btn-small"><i class="icon-star"></i> Icon button</button>
+							<button class="btn btn-small btn-primary">Small button</button>
+							<button class="btn btn-small btn-danger">Small button</button>
+						</p>
+						<p>
+							<button class="btn btn-small btn-warning">Small button</button>
+							<button class="btn btn-small btn-success">Small button</button>
+							<button class="btn btn-small btn-info">Small button</button>
+						</p>
+						<p>
+							<button class="btn btn-small btn-inverse">Small button</button>
+							<button class="btn btn-large btn-primary btn-round">Round button</button>
+							<button class="btn btn-large btn-round"><i class="icon-ok"></i></button>
+							<button class="btn btn-primary"><i class="icon-edit icon-white"></i></button>
+						</p>
+						<p>
+							<button class="btn btn-mini">Mini button</button>
+							<button class="btn btn-mini btn-primary">Mini button</button>
+							<button class="btn btn-mini btn-danger">Mini button</button>
+							<button class="btn btn-mini btn-warning">Mini button</button>
+						</p>
+						<p>
+							<button class="btn btn-mini btn-info">Mini button</button>
+							<button class="btn btn-mini btn-success">Mini button</button>
+							<button class="btn btn-mini btn-inverse">Mini button</button>
+						</p>
+					</div>
+				</div><!--/span-->
+					
+				<div class="box span4">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-list"></i> Buttons</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content  buttons">
+						<p>
+							<button class="btn btn-large">Large button</button>
+							<button class="btn btn-large btn-primary">Large button</button>
+						</p>
+						<p>
+							<button class="btn btn-large btn-danger">Large button</button>
+							<button class="btn btn-large btn-warning">Large button</button>
+						</p>
+						<p>
+							<button class="btn btn-large btn-success">Large button</button>
+							<button class="btn btn-large btn-info">Large button</button>
+						</p>
+						<p>
+							<button class="btn btn-large btn-inverse">Large button</button>
+						</p>
+						<div class="btn-group">
+							<button class="btn btn-large">Large Dropdown</button>
+							<button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#"><i class="icon-star"></i> Action</a></li>
+								<li><a href="#"><i class="icon-tag"></i> Another action</a></li>
+								<li><a href="#"><i class="icon-download-alt"></i> Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#"><i class="icon-tint"></i> Separated link</a></li>
+							</ul>
+						</div>
+						
+					</div>
+				</div><!--/span-->
+				
+				<!--
+				<div class="box span4">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-list"></i> Weekly Stat</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<ul class="dashboard-list">
+							<li>
+								<a href="#">
+									<i class="icon-arrow-up"></i>                               
+									<span class="green">92</span>
+									New Comments                                    
+								</a>
+							</li>
+						  <li>
+							<a href="#">
+							  <i class="icon-arrow-down"></i>
+							  <span class="red">15</span>
+							  New Registrations
+							</a>
+						  </li>
+						  <li>
+							<a href="#">
+							  <i class="icon-minus"></i>
+							  <span class="blue">36</span>
+							  New Articles                                    
+							</a>
+						  </li>
+						  <li>
+							<a href="#">
+							  <i class="icon-comment"></i>
+							  <span class="yellow">45</span>
+							  User reviews                                    
+							</a>
+						  </li>
+						  <li>
+							<a href="#">
+							  <i class="icon-arrow-up"></i>                               
+							  <span class="green">112</span>
+							  New Comments                                    
+							</a>
+						  </li>
+						  <li>
+							<a href="#">
+							  <i class="icon-arrow-down"></i>
+							  <span class="red">31</span>
+							  New Registrations
+							</a>
+						  </li>
+						  <li>
+							<a href="#">
+							  <i class="icon-minus"></i>
+							  <span class="blue">93</span>
+							  New Articles                                    
+							</a>
+						  </li>
+						  <li>
+							<a href="#">
+							  <i class="icon-comment"></i>
+							  <span class="yellow">254</span>
+							  User reviews                                    
+							</a>
+						  </li>
+						</ul>
+					</div>
+				</div><!--/span-->
+			</div><!--/row-->
 		  
        
 					<!-- content ends -->
@@ -491,9 +667,9 @@
 	<script src="assets/js/jquery.uploadify-3.1.min.js"></script>
 	<!-- history.js for cross-browser state change on ajax -->
 	<script src="assets/js/jquery.history.js"></script>
-	<!-- application script for Charisma demo -
+	<!-- application script for Charisma demo -->
 	<script src="assets/js/charisma.js"></script>
-	-->
+	
 	
 		
 </body>
