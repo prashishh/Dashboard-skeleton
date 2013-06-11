@@ -1,8 +1,9 @@
 'use strict';
 
 dashboardApp.controller('DashboardController',
-  function DashboardController($scope, $location, tableService) {
+  function DashboardController($scope, $location, tableService, tableService2) {
   	$scope.table_data = [];
+  	$scope.table_data2 = [];
 /*
 	var postData = {
 	  'hostname' : $scope.hostname,
@@ -42,7 +43,10 @@ dashboardApp.controller('DashboardController',
 	*/
 	var timer = setInterval(function(){
 		tableService.start();
+		tableService2.start();
+
 		$scope.table_data = tableService.asyncData;
+		$scope.table_data2 = tableService2.asyncData;
 		$scope.$apply();
 	//	console.log($scope.table_data);
 	}, 6000);  
