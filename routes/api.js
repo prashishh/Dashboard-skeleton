@@ -182,3 +182,38 @@ exports.barchart = function(req, res) {
   connection.end();
 
 };
+
+// responds table data in json format
+exports.tabledata = function(req, res) {
+  var mysql = require('mysql');
+  var output = [];
+  
+  var connection = mysql.createConnection({
+    host     : '127.0.0.1',
+    port     : '3306',
+    user     : 'root',
+    password : '',
+    database : 'tabledata'
+  });
+
+  console.log(req.body.tables.join(','));
+
+  connection.connect();
+  console.log("Database connected to get tabledata.");
+
+  res.writeHeader(200, {'Content-type': 'application/json'});
+  connection.query('SELECT ' + req.body.tables.join(',') + ' FROM table1', function(err, rows, fields) {
+  
+  if (err) throw err;
+
+  var result = JSON.stringify(rows);
+
+  console.log(result);
+
+  res.write(result);
+  res.end();
+});
+
+  connection.end();
+
+};
