@@ -6,6 +6,8 @@ dashboardApp.factory('tableService', function($http) {
   var tables = new Array();
       tables.push('username');
       tables.push('role');
+      tables.push('datereg');
+      tables.push('status');
 
   var postData = {
       'hostname' : '1',
@@ -17,6 +19,8 @@ dashboardApp.factory('tableService', function($http) {
     };
 
   myService.start = function() {
+
+
     myService.asyncData = $http({ method: "POST", url: '/api/tabledata', data: postData
       }).then(function (response) {
         myService.data = response.data;

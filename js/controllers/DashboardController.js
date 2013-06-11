@@ -1,8 +1,8 @@
 'use strict';
 
 dashboardApp.controller('DashboardController',
-  function DashboardController($scope, $location, $http, tableService) {
-  	
+  function DashboardController($scope, $location, tableService) {
+  	$scope.table_data = [];
 /*
 	var postData = {
 	  'hostname' : $scope.hostname,
@@ -40,13 +40,11 @@ dashboardApp.controller('DashboardController',
 		  });
 
 	*/
-	tableService.start();
-	$scope.table_data = tableService.asyncData;
-	console.log($scope.table_data);
-
-	$scope.$watch('table_data', function (newValue, oldValue) {
-    	if (newValue && newValue !== oldValue)
-      		console.log(newValue);
-    });
+	var timer = setInterval(function(){
+		tableService.start();
+		$scope.table_data = tableService.asyncData;
+		$scope.$apply();
+	//	console.log($scope.table_data);
+	}, 6000);  
 
   });
