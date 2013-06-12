@@ -491,43 +491,6 @@ function docReady(){
 		});
 	}
 
-	//pie chart
-	var data = [
-	{ label: "Internet Explorer",  data: 12},
-	{ label: "Mobile",  data: 27},
-	{ label: "Safari",  data: 85},
-	{ label: "Opera",  data: 64},
-	{ label: "Firefox",  data: 90},
-	{ label: "Chrome",  data: 112}
-	];
-	
-	if($("#piechart").length)
-	{
-		$.plot($("#piechart"), data,
-		{
-			series: {
-					pie: {
-							show: true
-					}
-			},
-			grid: {
-					hoverable: true,
-					clickable: true
-			},
-			legend: {
-				show: false
-			}
-		});
-		
-		function pieHover(event, pos, obj)
-		{
-			if (!obj)
-					return;
-			percent = parseFloat(obj.series.percent).toFixed(2);
-			$("#hover").html('<span style="font-weight: bold; color: '+obj.series.color+'">'+obj.series.label+' ('+percent+'%)</span>');
-		}
-		$("#piechart").bind("plothover", pieHover);
-	}
 	
 	//donut chart
 	if($("#donutchart").length)

@@ -24,7 +24,7 @@ dashboardApp.factory('tableService2', function($http) {
     myService.asyncData = $http({ method: "POST", url: '/api/tabledata2', data: postData
       }).then(function (response) {
         myService.data = response.data;
-      //  console.log(myService.data);
+        console.log(myService.data);
 
         return myService.data;
       }, function(response) {

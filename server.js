@@ -36,6 +36,7 @@ app.post('/api/getColumns', api.getcolumns);
 app.post('/api/barchart', api.barchart);
 app.post('/api/tabledata', api.tabledata);
 app.post('/api/tabledata2', api.tabledata2);
+app.post('/api/piedata', api.piedata);
 
 
 app.listen(3200, function() {
