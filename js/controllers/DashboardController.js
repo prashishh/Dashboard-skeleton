@@ -1,22 +1,27 @@
 'use strict';
 
 dashboardApp.controller('DashboardController',
-  function DashboardController($scope, $location, tableService, tableService2, pieService) {
+  function DashboardController($scope, $location, tableService, tableService2, pieService, barService) {
   	$scope.table_data = [];
   	$scope.table_data2 = [];
+	$scope.pie_data = [];
+	$scope.bar_data = [];
 
-  	$scope.pie_data = [];
+
 
 	var timer = setInterval(function(){
 		pieService.start();
 		tableService.start();
 		tableService2.start();
+		barService.start();
 
+		$scope.bar_data = barService.asyncData;
 		$scope.table_data = tableService.asyncData;
 		$scope.pie_data = pieService.asyncData;
 		$scope.table_data2 = tableService2.asyncData;
 		$scope.$apply();
 	}, 6000); 
+
 
 /*
 	var postData = {

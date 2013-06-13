@@ -37,6 +37,7 @@ app.post('/api/barchart', api.barchart);
 app.post('/api/tabledata', api.tabledata);
 app.post('/api/tabledata2', api.tabledata2);
 app.post('/api/piedata', api.piedata);
+app.post('/api/bardata', api.bardata);
 
 
 app.listen(3200, function() {
